@@ -17,7 +17,6 @@ class FieldServiceProvider extends ServiceProvider
     {
         Nova::serving(function (ServingNova $event) {
             Nova::script('input-mask', __DIR__.'/../dist/js/field.js');
-            Nova::style('input-mask', __DIR__.'/../dist/css/field.css');
         });
     }
 
