@@ -43,7 +43,7 @@ class InputMask extends Field
      * @param string $placeholder
      * @return InputMask
      */
-    public function placeholder(string $placeholder = '')
+    public function placeholder($placeholder)
     {
         return $this->withMeta([
             'extraAttributes' => [
