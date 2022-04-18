@@ -1,5 +1,5 @@
 <template>
-  <default-field :field="field" :errors="errors">
+  <DefaultField :field="field" :errors="errors">
     <template slot="field">
       <input
         :id="field.name"
@@ -11,7 +11,7 @@
         :mask="setMask"
       >
     </template>
-  </default-field>
+  </DefaultField>
 </template>
 
 <script>
