@@ -1,60 +1,36 @@
 <template>
-  <DefaultField :field="field" :errors="errors">
-    <template slot="field">
+  <DefaultField :field="field" :errors="errors" :show-help-text="showHelpText">
+    <template #field>
       <input
-        :id="field.name"
-        type="text"
-        class="w-full form-control form-input form-input-bordered"
-        :class="errorClasses"
-        v-bind="extraAttributes"
-        v-model="value"
-        :mask="setMask"
-      >
+          :id="field.attribute"
+          type="text"
+          class="w-full form-control form-input form-input-bordered"
+          :class="errorClasses"
+          :placeholder="field.name"
+          v-model="value"
+          v-maska="field.mask"
+      />
     </template>
   </DefaultField>
 </template>
 
 <script>
-import { FormField, HandlesValidationErrors } from "laravel-nova";
-import { mask } from "vue-the-mask";
+import { FormField, HandlesValidationErrors } from 'laravel-nova'
+import {maska} from "maska";
 
 export default {
   mixins: [FormField, HandlesValidationErrors],
 
-  props: ["resourceName", "resourceId", "field"],
+  props: ['resourceName', 'resourceId', 'field'],
 
-  directives: {
-    mask
-  },
-
-  computed: {
-    setMask() {
-      return this.field.mask;
-    },
-    defaultAttributes() {
-      return {
-        placeholder: this.field.placeholder || this.field.name,
-      }
-    },
-    extraAttributes() {
-      const attrs = this.field.extraAttributes
-
-      return {
-        // Leave the default attributes even though we can now specify
-        // whatever attributes we like because the old number field still
-        // uses the old field attributes
-        ...this.defaultAttributes,
-        ...attrs,
-      }
-    },
-  },
+  directives: {maska},
 
   methods: {
     /*
      * Set the initial, internal value for the field.
      */
     setInitialValue() {
-      this.value = this.field.value || "";
+      this.value = this.field.value || ''
     },
 
     /**
@@ -78,6 +54,6 @@ export default {
     handleChange(value) {
       this.value = value;
     }
-  }
-};
+  },
+}
 </script>
