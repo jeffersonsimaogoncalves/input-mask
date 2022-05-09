@@ -10,7 +10,7 @@ Nova custom field text with masks. It uses `vue-the-mask` to implement mask dire
 ## Installation
 
 ```sh
-composer require wemersonrv/input-mask
+composer require jeffersonsimaogoncalves/input-mask
 ```
 
 ## Usage
